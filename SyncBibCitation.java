@@ -15,7 +15,7 @@ public class RemoveCitation {
         
 	String wholeTextLatex, wholeTextBib, currentLine[], citation, textInBetween;
 	String FILE_LOCATION_LATEX = "latex_template.tex";
-	// When both bibitem and cite are document in the tex file replace the FILE_LOCATION_BIBTEX with FILE_LOCATION_LATEX
+	// When both bibitem and cite are available in a single tex file replace the FILE_LOCATION_BIBTEX with FILE_LOCATION_LATEX
 	String FILE_LOCATION_BIBTEX = "bib_template.bib";
         File LatexFile = new File(FILE_LOCATION_LATEX);
 	File BibFile = new File(FILE_LOCATION_BIBTEX);
