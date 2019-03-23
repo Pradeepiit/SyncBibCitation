@@ -13,17 +13,17 @@ public class RemoveCitation {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-		String wholeTextLatex, wholeTextBib, currentLine[], citation, textInBetween;
-		String FILE_LOCATION_LATEX = "latex_template.tex";
-		String FILE_LOCATION_BIBTEX = "bib_template.bib";
+	String wholeTextLatex, wholeTextBib, currentLine[], citation, textInBetween;
+	String FILE_LOCATION_LATEX = "latex_template.tex";
+	String FILE_LOCATION_BIBTEX = "bib_template.bib";
         File LatexFile = new File(FILE_LOCATION_LATEX);
-		File BibFile = new File(FILE_LOCATION_BIBTEX);
+	File BibFile = new File(FILE_LOCATION_BIBTEX);
         ArrayList<String> listOfCitations = new ArrayList<>();
         ArrayList<String> listOfBibItems = new ArrayList<>();
         
 
         wholeTextLatex = new String(Files.readAllBytes(LatexFile.toPath()));
-		wholeTextBib = new String(Files.readAllBytes(BibFile.toPath()));
+	wholeTextBib = new String(Files.readAllBytes(BibFile.toPath()));
         Pattern pattern = Pattern.compile(Pattern.quote("cite{") + "(.*?)" + Pattern.quote("}"));
         Matcher matcher = pattern.matcher(wholeTextLatex);
         while (matcher.find()) {
@@ -57,16 +57,14 @@ public class RemoveCitation {
             if (!matcher.find() && currentLine1.contains("bibitem{")) {
                 citation = currentLine1.substring(currentLine1.indexOf("{") + 1, currentLine1.indexOf("}"));
                 listOfBibItems.add(citation);
-                if (!set.contains(citation)) {
+                if (!set.contains(citation))
                     System.out.println("The bibilographic list includes " + citation + " but is not referred anywhere in the paper.");
-                }
             }
         }
 
         for (String str : listOfCitations) {
-            if (!listOfBibItems.contains(str)) {
+            if (!listOfBibItems.contains(str))
                 System.out.println("The cited article " + str + " is missing in the bibilographic list.");
-            }
         }
     }
 
