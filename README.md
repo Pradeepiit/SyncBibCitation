@@ -6,9 +6,9 @@ The research article writing includes adding the bibiliographic list with their 
 Just replace the `FILE_LOCATION_LATEX` and `FILE_LOCATION_BIB` variables with the respective latex and bibtex files. If the bibiliography list is added to the main tex file then provide both the filenames to be tex file.
 
 ## Significant Advantages
-⋅⋅* Ignore the synchronization of bibiliographic listing and citations in the main document.
-⋅⋅* This code automatically displays the label of extra bibiliographic references.
-⋅⋅* This code automatically displays the label of the cited reference unavailable in the bibiliographic references.
+* Ignore the synchronization of bibiliographic listing and citations in the main document.
+* This code automatically displays the label of extra bibiliographic references.
+* This code automatically displays the label of the cited reference unavailable in the bibiliographic references.
 
 ## Author contact info
 For any queries or suggestion please do revert back to pradeeprengaswamy@gmail.com
