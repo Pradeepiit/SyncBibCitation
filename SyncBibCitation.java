@@ -13,16 +13,19 @@ public class RemoveCitation {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-		String wholeText, currentLine[], citation, textInBetween;
-		String FILE_LOCATION = "latex_template.tex"
-        File actualFile = new File(FILE_LOCATION);
+		String wholeTextLatex, wholeTextBib, currentLine[], citation, textInBetween;
+		String FILE_LOCATION_LATEX = "latex_template.tex";
+		String FILE_LOCATION_BIBTEX = "bib_template.bib";
+        File LatexFile = new File(FILE_LOCATION_LATEX);
+		File BibFile = new File(FILE_LOCATION_BIBTEX);
         ArrayList<String> listOfCitations = new ArrayList<>();
         ArrayList<String> listOfBibItems = new ArrayList<>();
         
 
-        wholeText = new String(Files.readAllBytes(actualFile.toPath()));
+        wholeTextLatex = new String(Files.readAllBytes(LatexFile.toPath()));
+		wholeTextBib = new String(Files.readAllBytes(BibFile.toPath()));
         Pattern pattern = Pattern.compile(Pattern.quote("cite{") + "(.*?)" + Pattern.quote("}"));
-        Matcher matcher = pattern.matcher(wholeText);
+        Matcher matcher = pattern.matcher(wholeTextLatex);
         while (matcher.find()) {
             textInBetween = matcher.group(1);
             if (textInBetween.contains(",")) {
@@ -48,7 +51,7 @@ public class RemoveCitation {
 
         // ignore the commented bibitems and check if all the bibitems are cited in the paper
         pattern = Pattern.compile(Pattern.quote("%") + "(.*?)" + Pattern.quote("bibitem"));
-        currentLine = wholeText.split("\n");
+        currentLine = wholeTextBib.split("\n");
         for (String currentLine1 : currentLine) {
             matcher = pattern.matcher(currentLine1);
             if (!matcher.find() && currentLine1.contains("bibitem{")) {
